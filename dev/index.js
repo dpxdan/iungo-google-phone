@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { serverFunctions } from '../src/client/utils/serverFunctions.ts';
 
-const { FILENAME, PORT } = process.env;
+const { FILENAME, HOST, PORT } = process.env;
 
 const DevServer = () => {
   const iframe = React.useRef(null);
@@ -17,7 +17,7 @@ const DevServer = () => {
         .then(response => {
           iframe.current.contentWindow.postMessage(
             { type: 'RESPONSE', id, status: 'SUCCESS', response },
-            `https://localhost:${PORT}`
+            `https://${HOST}:${PORT}`
           );
         })
         .catch(err => {
@@ -28,7 +28,7 @@ const DevServer = () => {
               status: 'ERROR',
               response: err,
             },
-            `https://localhost:${PORT}`
+            `https://${HOST}:${PORT}`
           );
         });
     };
@@ -52,7 +52,7 @@ const DevServer = () => {
           position: 'absolute',
         }}
         ref={iframe}
-        src={`https://localhost:${PORT}/${FILENAME}-impl.html`}
+        src={`https://${HOST}:${PORT}/${FILENAME}-impl.html`}
       />
     </div>
   );

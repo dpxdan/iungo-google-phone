@@ -1,25 +1,17 @@
 export const onOpen = () => {
   const menu = SpreadsheetApp.getUi()
-    .createMenu('My Sample React Project') // edit me!
-    .addItem('Sheet Editor', 'openDialog')
-    .addItem('Sheet Editor (Bootstrap)', 'openDialogBootstrap')
-    .addItem('About me', 'openAboutSidebar');
+    .createMenu('Iungo')
+    .addItem('Click to Call', 'openDialogBootstrap')
+    .addItem('Ramal', 'openAboutSidebar');
 
   menu.addToUi();
 };
 
-export const openDialog = () => {
-  const html = HtmlService.createHtmlOutputFromFile('dialog-demo')
-    .setWidth(600)
-    .setHeight(600);
-  SpreadsheetApp.getUi().showModalDialog(html, 'Sheet Editor');
-};
-
 export const openDialogBootstrap = () => {
   const html = HtmlService.createHtmlOutputFromFile('dialog-demo-bootstrap')
-    .setWidth(600)
-    .setHeight(600);
-  SpreadsheetApp.getUi().showModalDialog(html, 'Sheet Editor (Bootstrap)');
+    .setWidth(320)
+    .setHeight(480);
+  SpreadsheetApp.getUi().showModalDialog(html, 'Click to Call');
 };
 
 export const openAboutSidebar = () => {
